@@ -5,7 +5,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/google/husky
+DEVICE_UNIFIED_PATH := device/google/shusky
+DEVICE_PATH := device/google/shusky/husky
 DEVICE_COMMON_PATH := device/google/zuma
 
 include $(DEVICE_COMMON_PATH)/BoardConfig-common.mk
@@ -74,12 +75,12 @@ TARGET_KERNEL_DTB := \
     google-devices/husky/google-base/zuma-b0-ipop.dtb
 
 # Kernel modules
-BOARD_VENDOR_KERNEL_MODULES_LOAD_RAW := $(strip $(shell cat $(DEVICE_PATH)/recovery/root/vendor_dlkm.modules.load))
+BOARD_VENDOR_KERNEL_MODULES_LOAD_RAW := $(strip $(shell cat $(DEVICE_UNIFIED_PATH)/recovery/root/vendor_dlkm.modules.load))
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(foreach m,$(BOARD_VENDOR_KERNEL_MODULES_LOAD_RAW),$(notdir $(m)))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD_RAW := $(strip $(shell cat $(DEVICE_PATH)/recovery/root/vendor_kernel_boot.modules.load))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD_RAW := $(strip $(shell cat $(DEVICE_UNIFIED_PATH)/recovery/root/vendor_kernel_boot.modules.load))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(foreach m,$(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD_RAW),$(notdir $(m)))
 BOOT_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(DEVICE_PATH)/recovery/root/vendor_dlkm.modules.blocklist
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(DEVICE_UNIFIED_PATH)/recovery/root/vendor_dlkm.modules.blocklist
 TARGET_KERNEL_EXT_MODULE_ROOT := kernel/google/zuma/google-modules
 
 TARGET_KERNEL_EXT_MODULES := \
@@ -154,9 +155,9 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_IMAGE_NAME := Image.lz4
 TARGET_KERNEL_CONFIG := gki_defconfig
 TARGET_KERNEL_SOURCE := kernel/google/zuma
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.lz4
-BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtbs
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbs/dtbo.img
+TARGET_PREBUILT_KERNEL := $(DEVICE_UNIFIED_PATH)/prebuilt/Image.lz4
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_UNIFIED_PATH)/prebuilt/dtbs
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_UNIFIED_PATH)/prebuilt/dtbs/dtbo.img
 BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
@@ -195,8 +196,8 @@ BOARD_USES_HWC_SERVICES := true
 # Recovery
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
-TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery.wipe
+TARGET_RECOVERY_FSTAB := $(DEVICE_UNIFIED_PATH)/recovery.fstab
+TARGET_RECOVERY_WIPE := $(DEVICE_UNIFIED_PATH)/recovery.wipe
 
 # Ramdisk compression
 BOARD_RAMDISK_USE_LZ4 := true

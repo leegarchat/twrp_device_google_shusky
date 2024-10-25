@@ -4,8 +4,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-LOCAL_PATH := device/google/husky
-DEVICE_PATH := device/google/husky
+LOCAL_PATH := device/google/shusky/husky
+DEVICE_UNIFIED_PATH := device/google/shusky
+DEVICE_PATH := device/google/shusky/husky
 
 TARGET_BOARD_KERNEL_HEADERS := device/google/shusky-kernel/kernel-headers
 
@@ -34,7 +35,7 @@ $(call inherit-product-if-exists, vendor/google_devices/husky/proprietary/husky-
 
 # Copy fstab file to ramdisk
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/recovery/root/fstab.zuma:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.zuma
+    $(DEVICE_UNIFIED_PATH)/recovery/root/fstab.zuma:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.zuma
 
 PRODUCT_PACKAGES += \
     linker.vendor_ramdisk \
@@ -44,20 +45,22 @@ PRODUCT_PACKAGES += \
 
 # Init files
 PRODUCT_COPY_FILES += \
-	device/google/husky/init.husky.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.husky.rc \
-	device/google/husky/recovery/root/init.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.rc \
-	device/google/husky/recovery/root/init.recovery.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.recovery.usb.rc \
-	device/google/husky/recovery/root/servicemanager.recovery.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/servicemanager.recovery.rc \
-	device/google/husky/recovery/root/android.hardware.health-service.zuma_recovery.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.health-service.zuma_recovery.rc \
-	device/google/husky/recovery/root/android.hardware.boot-service.default_recovery-pixel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.boot-service.default_recovery-pixel.rc
+	$(DEVICE_PATH)/init.husky.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.husky.rc \
+	$(DEVICE_UNIFIED_PATH)/recovery/root/init.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.rc \
+	$(DEVICE_UNIFIED_PATH)/recovery/root/init.recovery.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.recovery.usb.rc \
+	$(DEVICE_UNIFIED_PATH)/recovery/root/servicemanager.recovery.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/servicemanager.recovery.rc \
+	$(DEVICE_UNIFIED_PATH)/recovery/root/android.hardware.health-service.zuma_recovery.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.health-service.zuma_recovery.rc \
+	$(DEVICE_UNIFIED_PATH)/recovery/root/android.hardware.boot-service.default_recovery-pixel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.boot-service.default_recovery-pixel.rc
 
 # Device Manifest file
 DEVICE_MANIFEST_FILE := \
-device/google/husky/manifest.xml
+$(DEVICE_PATH)/manifest.xml
 
-#SHIPPING API
+# Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 32
-PRODUCT_TARGET_VNDK_VERSION := 32
+
+# VNDK API
+PRODUCT_TARGET_VNDK_VERSION := 34
 
 # define hardware platform
 PRODUCT_PLATFORM := zuma
@@ -118,9 +121,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.ignore_hdr_camera_layers=true
 
 PRODUCT_COPY_FILES += \
-    device/google/husky/display_colordata_dev_cal0.pb:$(TARGET_COPY_OUT_VENDOR)/etc/display_colordata_dev_cal0.pb \
-    device/google/husky/display_golden_google-hk3_cal0.pb:$(TARGET_COPY_OUT_VENDOR)/etc/display_golden_google-hk3_cal0.pb \
-    device/google/husky/display_golden_external_display_cal2.pb:$(TARGET_COPY_OUT_VENDOR)/etc/display_golden_external_display_cal2.pb
+    $(DEVICE_UNIFIED_PATH)/display_colordata_dev_cal0.pb:$(TARGET_COPY_OUT_VENDOR)/etc/display_colordata_dev_cal0.pb \
+    $(DEVICE_UNIFIED_PATH)/display_golden_google-hk3_cal0.pb:$(TARGET_COPY_OUT_VENDOR)/etc/display_golden_google-hk3_cal0.pb \
+    $(DEVICE_UNIFIED_PATH)/display_golden_external_display_cal2.pb:$(TARGET_COPY_OUT_VENDOR)/etc/display_golden_external_display_cal2.pb \
+    $(DEVICE_UNIFIED_PATH)/panel_config_google-hk3_cal0.pb:$(TARGET_COPY_OUT_VENDOR)/etc/panel_config_google-hk3_cal0.pb
 
 # config of display brightness dimming
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.0.brightness.dimming.usage?=1
@@ -146,10 +150,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Display ACL
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.0.brightness.acl.default=0
-
-# display color data
-PRODUCT_COPY_FILES += \
-	device/google/shusky/husky/panel_config_google-hk3_cal0.pb:$(TARGET_COPY_OUT_VENDOR)/etc/panel_config_google-hk3_cal0.pb
 
 # Display RRS default Config
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.vendor.display.primary.boot_config=1008x2244@120
@@ -197,12 +197,12 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Power HAL config
 PRODUCT_COPY_FILES += \
-	device/google/husky/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+	$(DEVICE_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # PowerStats HAL
 PRODUCT_SOONG_NAMESPACES += \
-    device/google/husky/powerstats \
-    device/google/husky
+    $(DEVICE_UNIFIED_PATH)/powerstats/husky \
+    $(DEVICE_PATH)
 
 # Identity credential
 PRODUCT_PACKAGES += \

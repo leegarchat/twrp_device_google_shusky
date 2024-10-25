@@ -7,7 +7,6 @@
 
 soong_namespace {
 	imports: [
-		"device/google/shusky/husky",
-		"device/google/shusky/shiba",
+		"device/google/shusky/bootctrl",
 	],
 }

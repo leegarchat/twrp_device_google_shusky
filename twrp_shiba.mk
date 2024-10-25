@@ -6,7 +6,7 @@
 #
 
 # Inherit device configuration
-DEVICE_CODENAME := husky
+DEVICE_CODENAME := shiba
 DEVICE_PATH := device/google/shusky/$(DEVICE_CODENAME)
 VENDOR_PATH := vendor/google/$(DEVICE_CODENAME)
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
@@ -20,14 +20,14 @@ $(call inherit-product, vendor/*/config/common.mk)
 PRODUCT_DEVICE := $(DEVICE_CODENAME)
 PRODUCT_NAME := twrp_$(DEVICE_CODENAME)
 PRODUCT_BRAND := google
-PRODUCT_MODEL := Pixel 8 Pro
+PRODUCT_MODEL := Pixel 8
 PRODUCT_MANUFACTURER := google
 
 PRODUCT_GMS_CLIENTID_BASE := android-google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="husky-user 15 AP3A.241005.015 12366759 release-keys" \
-    BuildFingerprint=google/husky/husky:15/AP3A.241005.015/12366759:user/release-keys \
+    BuildDesc="shiba-user 15 AP3A.241005.015 12366759 release-keys" \
+    BuildFingerprint=google/shiba/shiba:15/AP3A.241005.015/12366759:user/release-keys \
     DeviceProduct=$(DEVICE_CODENAME)
 
 $(call inherit-product, $(VENDOR_PATH)/$(DEVICE_CODENAME)-vendor.mk)

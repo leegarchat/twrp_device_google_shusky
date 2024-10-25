@@ -4,14 +4,13 @@
 # General information
 export FOX_VERSION="R11.1"
 export OF_MAINTAINER="GamerBoy1234294"
-export OF_MAINTAINER_AVATAR="device/google/husky/maintainer.png"
+export OF_MAINTAINER_AVATAR="device/google/shusky/maintainer.png"
 
 # Build environment stuffs
-export FOX_BUILD_DEVICE="Pixel8Pro"
 export ALLOW_MISSING_DEPENDENCIES=true
 export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
-export TARGET_DEVICE_ALT="Pixel8Pro, GooglePixel8Pro, husky, Husky, shusky, Shusky"
-export FOX_TARGET_DEVICES="Pixel8Pro, GooglePixel8Pro, husky, Husky, shusky, Shusky"
+export FOX_TARGET_DEVICES="Pixel8Pro, Pixel8, GooglePixel8Pro, GooglePixel8, husky, Husky, shiba, Shiba, shusky, Shusky"
+export TARGET_DEVICE_ALT="Pixel8Pro, Pixel8, GooglePixel8Pro, GooglePixel8, husky, Husky, shiba, Shiba, shusky, Shusky"
 
 # Use magisk boot for patching
 export OF_USE_MAGISKBOOT=1
@@ -97,7 +96,7 @@ export OF_USE_GREEN_LED=1
 export SHRP_MAINTAINER="GamerBoy1234294"
 
 # Build environment stuff
-export SHRP_DEVICE_CODE=husky
+export SHRP_DEVICE_CODE=shusky
 export ALLOW_MISSING_DEPENDENCIES=true
 export SHRP_PATH=device/google/$SHRP_DEVICE_CODE
 
