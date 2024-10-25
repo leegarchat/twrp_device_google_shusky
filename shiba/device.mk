@@ -34,10 +34,6 @@ $(call inherit-product-if-exists, vendor/google_devices/shiba/proprietary/shiba-
 #include device/google/shusky-sepolicy/shiba-sepolicy.mk
 #include device/google/zuma-sepolicy/zuma-sepolicy.mk
 
-# Copy fstab file to ramdisk
-PRODUCT_COPY_FILES += \
-    $(DEVICE_UNIFIED_PATH)/recovery/root/fstab.zuma:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.zuma
-
 PRODUCT_PACKAGES += \
     linker.vendor_ramdisk \
     resize2fs.vendor_ramdisk \
@@ -272,10 +268,6 @@ PRODUCT_PACKAGES += \
     com.google.hardware.pixel.display-V4-ndk.vendor:64 \
     com.google.hardware.pixel.display-V5-ndk.vendor \
     com.google.hardware.pixel.display-V6-ndk.vendor
-
-# Shell scripts
-PRODUCT_COPY_FILES += \
-	device/google/zuma/disable_contaminant_detection.sh:$(TARGET_COPY_OUT_VENDOR)/bin/hw/disable_contaminant_detection.sh
 
 # PowerStats HAL
 PRODUCT_PACKAGES += \

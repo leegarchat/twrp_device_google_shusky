@@ -33,10 +33,6 @@ $(call inherit-product-if-exists, vendor/google_devices/husky/proprietary/husky-
 #include device/google/shusky-sepolicy/husky-sepolicy.mk
 #include device/google/zuma-sepolicy/zuma-sepolicy.mk
 
-# Copy fstab file to ramdisk
-PRODUCT_COPY_FILES += \
-    $(DEVICE_UNIFIED_PATH)/recovery/root/fstab.zuma:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/system/etc/fstab.zuma
-
 PRODUCT_PACKAGES += \
     linker.vendor_ramdisk \
     resize2fs.vendor_ramdisk \
@@ -83,15 +79,19 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_system=true
 
 # Boot control HAL
-#PRODUCT_PACKAGES += \
-#    android.hardware.boot-service.default-pixel \
-#    android.hardware.boot-service.default_recovery-pixel
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl \
-    android.hardware.boot@1.2-impl.recovery \
-    android.hardware.boot@1.2-impl-wrapper \
-    android.hardware.boot@1.2-impl-wrapper.recovery \
-    android.hardware.boot@1.2-service
+    android.hardware.boot-service.default-pixel \
+    android.hardware.boot-service.default_recovery-pixel
+
+PRODUCT_PACKAGES += \
+    android.hardware.health-service.zuma \
+    android.hardware.health-service.zuma_recovery \
+#PRODUCT_PACKAGES += \
+#    android.hardware.boot@1.2-impl \
+#    android.hardware.boot@1.2-impl.recovery \
+#    android.hardware.boot@1.2-impl-wrapper \
+#    android.hardware.boot@1.2-impl-wrapper.recovery \
+#    android.hardware.boot@1.2-service
 
 PRODUCT_PACKAGES += \
     bootctrl.zuma \
@@ -267,10 +267,6 @@ PRODUCT_PACKAGES += \
     com.google.hardware.pixel.display-V4-ndk.vendor:64 \
     com.google.hardware.pixel.display-V5-ndk.vendor \
     com.google.hardware.pixel.display-V6-ndk.vendor
-
-# Shell scripts
-PRODUCT_COPY_FILES += \
-	device/google/zuma/disable_contaminant_detection.sh:$(TARGET_COPY_OUT_VENDOR)/bin/hw/disable_contaminant_detection.sh
 
 # PowerStats HAL
 PRODUCT_PACKAGES += \
