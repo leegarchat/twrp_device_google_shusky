@@ -4,10 +4,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-LOCAL_PATH := device/google/shusky/shiba
+LOCAL_PATH := device/google/shusky
 DEVICE_UNIFIED_PATH := device/google/shusky
-DEVICE_PATH := device/google/shusky/shiba
-DEVICE_COMMON_PATH := device/google/zuma
+DEVICE_PATH := $(DEVICE_UNIFIED_PATH)/$(DEVICE_CODENAME)
 
 TARGET_BOARD_KERNEL_HEADERS := device/google/shusky-kernel/kernel-headers
 
@@ -25,13 +24,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-$(call inherit-product-if-exists, vendor/google_devices/shiba/prebuilts/device-vendor-shiba.mk)
-$(call inherit-product-if-exists, vendor/google_devices/zuma/prebuilts/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/zuma/proprietary/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/shiba/proprietary/shiba/device-vendor-shiba.mk)
-$(call inherit-product-if-exists, vendor/google_devices/shiba/proprietary/shiba-vendor.mk)
-
-#include device/google/shusky-sepolicy/shiba-sepolicy.mk
+#include device/google/shusky-sepolicy/$(DEVICE_CODENAME)-sepolicy.mk
 #include device/google/zuma-sepolicy/zuma-sepolicy.mk
 
 PRODUCT_PACKAGES += \
@@ -42,12 +35,12 @@ PRODUCT_PACKAGES += \
 
 # Init files
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/init.shiba.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.shiba.rc \
-	$(DEVICE_UNIFIED_PATH)/recovery/root/init.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.rc \
-	$(DEVICE_UNIFIED_PATH)/recovery/root/init.recovery.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.recovery.usb.rc \
-	$(DEVICE_UNIFIED_PATH)/recovery/root/servicemanager.recovery.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/servicemanager.recovery.rc \
-	$(DEVICE_UNIFIED_PATH)/recovery/root/android.hardware.health-service.zuma_recovery.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.health-service.zuma_recovery.rc \
-	$(DEVICE_UNIFIED_PATH)/recovery/root/android.hardware.boot-service.default_recovery-pixel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.boot-service.default_recovery-pixel.rc
+	$(DEVICE_PATH)/init.$(DEVICE_CODENAME).rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(DEVICE_CODENAME).rc \
+	$(DEVICE_PATH)/recovery/root/init.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.rc \
+	$(DEVICE_PATH)/recovery/root/init.recovery.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.recovery.usb.rc \
+	$(DEVICE_PATH)/recovery/root/servicemanager.recovery.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/servicemanager.recovery.rc \
+	$(DEVICE_PATH)/recovery/root/android.hardware.health-service.zuma_recovery.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.health-service.zuma_recovery.rc \
+	$(DEVICE_PATH)/recovery/root/android.hardware.boot-service.default_recovery-pixel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.boot-service.default_recovery-pixel.rc
 
 # Device Manifest file
 DEVICE_MANIFEST_FILE := \
@@ -84,9 +77,9 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.default-pixel \
     android.hardware.boot-service.default_recovery-pixel
 
-PRODUCT_PACKAGES += \
-    android.hardware.health-service.zuma \
-    android.hardware.health-service.zuma_recovery \
+#PRODUCT_PACKAGES += \
+#    android.hardware.health-service.zuma \
+#    android.hardware.health-service.zuma_recovery \
 #PRODUCT_PACKAGES += \
 #    android.hardware.boot@1.2-impl \
 #    android.hardware.boot@1.2-impl.recovery \
@@ -202,7 +195,7 @@ PRODUCT_COPY_FILES += \
 
 # PowerStats HAL
 PRODUCT_SOONG_NAMESPACES += \
-    $(DEVICE_UNIFIED_PATH)/powerstats/shiba \
+    $(DEVICE_UNIFIED_PATH)/powerstats/$(DEVICE_CODENAME) \
     $(DEVICE_PATH)
 
 # Identity credential

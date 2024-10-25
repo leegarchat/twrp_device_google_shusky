@@ -7,7 +7,7 @@
 
 # Inherit device configuration
 DEVICE_CODENAME := shiba
-DEVICE_PATH := device/google/shusky/$(DEVICE_CODENAME)
+DEVICE_PATH := device/google/shusky
 VENDOR_PATH := vendor/google/$(DEVICE_CODENAME)
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 $(call inherit-product, device/google/zuma/lineage_common.mk)
