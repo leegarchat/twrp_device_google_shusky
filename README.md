@@ -1,7 +1,7 @@
-# Android device tree for Google Pixel 8 Pro (husky)
+# Android device tree for Google Pixel 8/8 Pro (husky/shiba)
 ![OFRP](https://i.ibb.co/4WgF7pR/banner-2.png "OFRP")
 
-OrangeFox Recovery Project (OFRP) for Pixel 8 Pro / Pixel 8
+OrangeFox Recovery Project (OFRP) for Pixel 8/8 Pro
 ======================================
 
 # How to build
