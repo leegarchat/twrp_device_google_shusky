@@ -1,7 +1,7 @@
 # Android device tree for Google Pixel 8 Pro (husky)
 ![OFRP](https://i.ibb.co/4WgF7pR/banner-2.png "OFRP")
 
-OrangeFox Recovery Project (OFRP) for POCO F5 / Redmi Note 12 Turbo
+OrangeFox Recovery Project (OFRP) for Pixel 8 Pro / Pixel 8
 ======================================
 
 # How to build
