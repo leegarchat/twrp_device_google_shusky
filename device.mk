@@ -8,12 +8,7 @@ DEVICE_PATH := device/google/shusky
 
 TARGET_BOARD_KERNEL_HEADERS := device/google/shusky-kernel/kernel-headers
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 $(call soong_config_set,google_displaycolor,displaycolor_platform,zuma)
 
 PRODUCT_SHIPPING_API_LEVEL := 32
@@ -26,8 +21,7 @@ PRODUCT_ENFORCE_VINTF_MANIFEST := true
 ACTUATOR_MODEL := luxshare_ict_081545
 ADAPTIVE_HAPTICS_FEATURE := adaptive_haptics_v1
 
-RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so
-RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so
+
 
 PRODUCT_COPY_FILES += $(DEVICE_PATH)/pixel-stuff/mm/pixel-mm.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/pixel-mm.rc
 PRODUCT_COPY_FILES += $(DEVICE_PATH)/pixel-stuff/conf/init.factory.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/hw/init.factory.rc
@@ -47,8 +41,14 @@ PRODUCT_PACKAGES += libdisplaycolor
 PRODUCT_PACKAGES += audioroute 
 PRODUCT_PACKAGES += libaudioroutelite
 PRODUCT_PACKAGES += mm_logd
+PRODUCT_PACKAGES += libion
 PRODUCT_PACKAGES += PixelLogger
 PRODUCT_PACKAGES_DEBUG += PixelLogger
+
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libion.so
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libdmabufheap.so
 
 # HAL bootctrl pixel
 PRODUCT_PACKAGES += android.hardware.boot@1.2-service-pixel
