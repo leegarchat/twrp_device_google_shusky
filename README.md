@@ -17,8 +17,8 @@ It was originally released in China as Redmi Note 12 Turbo, in March 2023.
 | Chipset     | Google Tensor G3 (4 nm)
 | CPU         | Nona-core (1x3.0 GHz Cortex-X3 & 4x2.45 GHz Cortex-A715 & 4x2.15 GHz Cortex-A510)
 | GPU         | Immortalis-G715s MC10
-| Memory      | 8(Shiba)/12(Husky) GB LPDDR5 RAM
-| Storage     | 128/256 (UFS 3.1) Shiba | 128/256/512 GB/1 TB (UFS 3.1) Husky
+| Memory      | 8GB (Shiba)/12GB (Husky)  LPDDR5 RAM
+| Storage     | (128/256 (UFS 3.1) Shiba) (128/256/512 GB/1 TB (UFS 3.1) Husky)
 | SIM         | Dual SIM (Nano-SIM, dual stand-by)
 | Battery     | 5000 mAh Li-Po (non-removable), 67W fast charge
 | Shipped OS  | Android 13.0 (MIUI 14)
