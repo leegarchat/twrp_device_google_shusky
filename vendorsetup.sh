@@ -1,5 +1,55 @@
 #!/bin/bash
 
+
+
+fox_dir=$(pwd)
+inject_self_repacker(){
+    file="$fox_dir/bootable/recovery/twrpRepacker.cpp"
+    # Проверка, существует ли файл
+    if [ ! -f "$file" ]; then
+        echo "Файл не найден: $file"
+        exit 1
+    fi
+    if grep -q "bool twrpRepacker::Flash_Current_Twrp()" "$file"; then
+        echo "Функция twrpRepacker::Flash_Current_Twrp() найдена в файле"
+        if ! grep -q "if (TWFunc::Path_Exists(\"/system/bin/reflash_twrp.sh\"))" "$file"; then
+            echo "Вставляем код в функцию twrpRepacker::Flash_Current_Twrp()"
+            sed -i '/bool twrpRepacker::Flash_Current_Twrp() {/a \
+    if (TWFunc::Path_Exists("/system/bin/reflash_twrp.sh")) {\
+        int pipe_fd[2];\
+        if (pipe(pipe_fd) == -1) {\
+            LOGERR("Failed to create pipe");\
+            return false;\
+        }\
+        if (TWFunc::Path_Exists("/system/bin/reflash_twrp.sh")) {\
+            std::string command = "/system/bin/reflash_twrp.sh " + std::to_string(pipe_fd[1]) + " " + std::to_string(pipe_fd[0]);\
+            int result = TWFunc::Exec_Cmd(command);\
+            if (result != 0) {\
+                LOGERR("Script reflash_twrp.sh failed with error code: %d", result);\
+                return false;\
+            }\
+            close(pipe_fd[0]);\
+            close(pipe_fd[1]);\
+            return true;\
+        }\
+        return false;\
+    }' "$file"
+            echo "Код успешно вставлен."
+        else
+            echo "Код уже присутствует в функции twrpRepacker::Flash_Current_Twrp()."
+        fi
+    else
+        echo "Функция twrpRepacker::Flash_Current_Twrp() не найдена в файле."
+        exit 1
+    fi
+}
+
+
+inject_self_repacker 
+
+sed -i 's/ || defined(RECOVERY_ABGR)//g' $fox_dir/bootable/recovery/minuitwrp/graphics.cpp
+sed -i 's/ || defined(RECOVERY_ABGR)//g' $fox_dir//bootable/recovery/minuitwrp/resources.cpp
+
 ## OrangeFox variables:
 # General information
 export FOX_VERSION="R12.1"
@@ -55,7 +105,7 @@ export FOX_BUILD_BASH=1
 export OF_RUN_POST_FORMAT_PROCESS=1
 
 # Disable decryption
-export OF_SKIP_FBE_DECRYPTION=1
+# export OF_SKIP_FBE_DECRYPTION=1
 
 # Use /data/recovery/Fox/ for Storage
 export FOX_USE_DATA_RECOVERY_FOR_SETTINGS=1
@@ -65,8 +115,8 @@ export FOX_BUGGED_AOSP_ARB_WORKAROUND="1601559499"
 
 export OF_QUICK_BACKUP_LIST="/boot;/init_boot;/data;"
 
-# Magisk
-export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk-v28.0.zip
+# Magisk\\wsl.localhost\Fedora\home\leegar\fox_12.1\device\google\shusky\vendorsetup.sh
+export FOX_USE_SPECIFIC_MAGISK_ZIP=$fox_dir/device/google/shusky/included-stuff/Magisk/Magisk-v28.0.zip
 
 # Don't install AromaFM
 export FOX_DELETE_AROMAFM=1
@@ -94,4 +144,3 @@ export FOX_ENABLE_APP_MANAGER=1
 export FOX_VARIANT="default"
 export OF_USE_GREEN_LED=1
 export ALLOW_MISSING_DEPENDENCIES=true
-echo "- Привет!"
