@@ -1,0 +1,2 @@
+require board=shiba
+require partition-exists=vendor_kernel_boot
