@@ -7,8 +7,20 @@ OrangeFox Recovery Project (OFRP) for POCO F5 / Redmi Note 12 Turbo
 # How to build
 Check OFRP official guide https://wiki.orangefox.tech/en/dev/building
 
-The POCO F5 (codenamed "marble") is an upper-mid-range smartphone from Xiaomi. It was announced and released in May 2023.
-It was originally released in China as Redmi Note 12 Turbo, in March 2023.
+The Pixel 8 (codenamed "shiba") and Pixel 8 Pro (codenamed "husky") are Google’s flagship smartphones for 2023. Announced and released in October 2023, both models showcase Google’s latest AI-driven features, powered by the custom-built Tensor G3 chipset (internally codenamed "zuma"). Both devices share a common hardware base and a unified source code tree, collectively referred to as "shusky." The Pixel 8 is a more compact option, while the Pixel 8 Pro offers a larger, advanced display along with additional hardware features optimized for professional-grade photography.
+
+## Working
+- **Update_engine** — installation of `payload.bin` format firmware
+- **Sideload** — enabled but untested
+- **Display** — displays correctly
+- **Touchscreen** — touch functionality is operational
+- **A/B Slot Switching** — works properly both after installation and in manual mode
+- **Reflash Current Recovery** — custom code implemented for recovery reflashing
+
+## Not Working
+- **MTP** — file transfer over MTP is not functional
+- **/data Decryption** — data decryption is non-functional due to Tensor architecture limitations and is unlikely to be resolved. Use DFE-NEO to disable encryption; this file will be included in the release alongside `OrangeFox.img`.
+
 
 ## Device specifications
 
