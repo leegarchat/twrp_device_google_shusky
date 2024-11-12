@@ -116,6 +116,7 @@ export FOX_BUGGED_AOSP_ARB_WORKAROUND="1601559499"
 export OF_QUICK_BACKUP_LIST="/boot;/init_boot;/data;"
 
 # Magisk\\wsl.localhost\Fedora\home\leegar\fox_12.1\device\google\shusky\vendorsetup.sh
+# \\wsl.localhost\Fedora\home\leegar\fox_12.1\device\google\shusky\included-staff\Magisk\Magisk-v28.0.zip
 export FOX_USE_SPECIFIC_MAGISK_ZIP=$fox_dir/device/google/shusky/included-stuff/Magisk/Magisk-v28.0.zip
 
 # Don't install AromaFM
