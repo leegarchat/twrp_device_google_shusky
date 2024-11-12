@@ -17,16 +17,16 @@ It was originally released in China as Redmi Note 12 Turbo, in March 2023.
 | Chipset     | Google Tensor G3 (4 nm)
 | CPU         | Nona-core (1x3.0 GHz Cortex-X3 & 4x2.45 GHz Cortex-A715 & 4x2.15 GHz Cortex-A510)
 | GPU         | Immortalis-G715s MC10
-| Memory      | 8GB (Shiba)/12GB (Husky)  LPDDR5 RAM
-| Storage     | (128/256 (UFS 3.1) Shiba) (128/256/512 GB/1 TB (UFS 3.1) Husky)
-| SIM         | Dual SIM (Nano-SIM, dual stand-by)
-| Battery     | 5000 mAh Li-Po (non-removable), 67W fast charge
-| Shipped OS  | Android 13.0 (MIUI 14)
-| Dimensions  | 161.1 x 75 x 7.9 mm (6.34 x 2.95 x 0.31 in)
-| Display     | 6.67", 1080x2400 pixels, AMOLED, 120Hz, 12 bit, Dolby Vision, HDR10+
-| Camera      | 64 MP (main), 8 MP (ultrawide), 2 MP (macro), 16 MP (front)
-| Comms       | GSM/HSPA/LTE/5G, Wi-Fi 802.11 a/b/g/n/ac/ax, Bluetooth 5.3, NFC (non-IN)
-| Sensors     | Fingerprint (side-mounted), accelerometer, gyro, compass, proximity, light
+| Memory      | (8GB Shiba)/(12GB Husky) LPDDR5 RAM
+| Storage     | (128/256 Shiba)/(128/256/512 GB/1 TB Husky) (UFS 3.1)
+| SIM         | Nano-SIM and eSIM
+| Battery     | Li-Ion 4575 mAh (non-removable), (30Ws Husky)/(27W Shiba) wired, PD3.0, (23W Husky)/(18W Shiba) wireless, Reverse wireless
+| Shipped OS  | Android 14, upgradable to Android 15, up to 7 major Android upgrades
+| Dimensions  | (162.6 x 76.5 x 8.8 mm (6.40 x 3.01 x 0.35 in) Husky)/(150.5 x 70.8 x 8.9 mm (5.93 x 2.79 x 0.35 in) Shiba)
+| Display     | (6.7", 1344x2992 pixels, LTPO OLED, 120Hz, HDR10+, 1600 nits (HBM), 2400 nits (peak) - Husky)/(6.2", 1080x2400 pixels, OLED, 120Hz, HDR10+, 1400 nits (HBM), 2000 nits (peak) - Shiba)
+| Camera      | (50 MP, f/1.7, 25mm (wide), 1/1.31", 1.2µm, dual pixel PDAF, OIS 48 MP, f/2.8, 113mm (periscope telephoto), 1/2.55", 0.7µm, dual pixel PDAF, OIS, 5x optical zoom Husky)/(50 MP (12 MP eff.), f/1.7, 25mm (wide), 1/1.31", 1.2µm, dual pixel PDAF, OIS  Shiba)
+| Comms       | Wi-Fi 802.11 a/b/g/n/ac/6e/7, tri-band, Wi-Fi Direct Bluetooth	5.3, A2DP, LE, aptX HD
+| Sensors     | Fingerprint (under display, optical), accelerometer, gyro, proximity, compass, barometer
 
 ## Device picture
 
