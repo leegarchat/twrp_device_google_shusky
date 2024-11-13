@@ -126,12 +126,11 @@ extra/private/google-modules/soc/gs/drivers/watchdog/s3c2410_wdt.ko
 extra/private/google-modules/soc/gs/drivers/cpufreq/exynos-acme.ko
 extra/private/google-modules/soc/gs/drivers/clocksource/exynos_mct_v3.ko
 extra/private/google-modules/soc/gs/drivers/devfreq/google/exynos_devfreq.ko
-extra/private/google-modules/soc/gs/drivers/performance/gs_perf_mon/gs_perf_mon.ko
-extra/private/google-modules/soc/gs/drivers/performance/lat_governors/gs_governor_memlat.ko
-extra/private/google-modules/soc/gs/drivers/performance/lat_governors/gs_governor_dsulat.ko
-extra/private/google-modules/soc/gs/drivers/performance/lat_governors/gs_governor_utils.ko
-extra/private/google-modules/soc/gs/drivers/performance/lat_governors/gs_memlat_devfreq.ko
-extra/private/google-modules/soc/gs/drivers/performance/lat_governors/gs_dsulat_devfreq.ko
+extra/private/google-modules/soc/gs/drivers/devfreq/google/arm-memlat-mon.ko
+extra/private/google-modules/soc/gs/drivers/devfreq/google/governor_memlat.ko
+extra/private/google-modules/soc/gs/drivers/devfreq/google/governor_dsulat.ko
+extra/private/google-modules/soc/gs/drivers/devfreq/google/memlat-devfreq.ko
+extra/private/google-modules/soc/gs/drivers/devfreq/google/dsulat-devfreq.ko
 extra/private/google-modules/soc/gs/drivers/iio/power/odpm.ko
 extra/private/google-modules/soc/gs/drivers/bts/bts.ko
 extra/private/google-modules/soc/gs/drivers/block/zram/zram_gs.ko

@@ -113,7 +113,7 @@ export FOX_USE_DATA_RECOVERY_FOR_SETTINGS=1
 # For some reason this is dumb and necessary
 export FOX_BUGGED_AOSP_ARB_WORKAROUND="1601559499"
 
-export OF_QUICK_BACKUP_LIST="/boot;/init_boot;/data;"
+export OF_QUICK_BACKUP_LIST="/boot;/init_boot;/vendor_boot;/vendor_kernel_boot"
 
 # Magisk\\wsl.localhost\Fedora\home\leegar\fox_12.1\device\google\shusky\vendorsetup.sh
 # \\wsl.localhost\Fedora\home\leegar\fox_12.1\device\google\shusky\included-staff\Magisk\Magisk-v28.0.zip
@@ -141,7 +141,7 @@ export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
 export OF_ENABLE_FS_COMPRESSION=1
 export FOX_REPLACE_TOOLBOX_GETPROP=1
 export FOX_BASH_TO_SYSTEM_BIN=1
-export FOX_ENABLE_APP_MANAGER=1
+# export FOX_ENABLE_APP_MANAGER=1
 export FOX_VARIANT="default"
 export OF_USE_GREEN_LED=1
 export ALLOW_MISSING_DEPENDENCIES=true
