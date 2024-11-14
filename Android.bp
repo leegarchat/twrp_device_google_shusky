@@ -10,5 +10,8 @@ soong_namespace {
 		"device/google/shusky/pixel-stuff/conf",
 		"device/google/shusky/pixel-stuff/bootctrl/1.2",
 		"device/google/shusky/pixel-stuff/mm",
+		// "device/google/shusky/pixel-stuff/vibrator",
+		// "device/google/shusky/pixel-stuff/vibrator/cs40l26",
+		// "device/google/shusky/pixel-stuff/vibrator/common",
 	],
 }

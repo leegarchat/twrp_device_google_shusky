@@ -2,3 +2,4 @@ ro.display.series=Pixel 8
 ro.board.platform=zuma
 ro.adb.secure=0
 ro.crypto.volume.options=
+persist.sys.isUsbOtgEnabled=true

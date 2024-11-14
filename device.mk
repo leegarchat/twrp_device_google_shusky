@@ -32,6 +32,14 @@ PRODUCT_PACKAGES += fsck.vendor_ramdisk
 PRODUCT_PACKAGES += tune2fs.vendor_ramdisk
 PRODUCT_PACKAGES += fstab.zuma.vendor_ramdisk
 PRODUCT_PACKAGES += fstab.zuma-fips.vendor_ramdisk
+
+# PRODUCT_PACKAGES += resize2fs.vendor_ramdisk
+PRODUCT_PACKAGES += resize.f2fs.vendor_ramdisk
+PRODUCT_PACKAGES += linker_hwasan64.vendor_ramdisk
+# PRODUCT_PACKAGES += fsck.f2fs.vendor_ramdisk
+PRODUCT_PACKAGES += dump.f2fs.vendor_ramdisk
+PRODUCT_PACKAGES += defrag.f2fs.vendor_ramdisk
+
 PRODUCT_PACKAGES += libtrusty
 PRODUCT_PACKAGES += update_engine_sideload
 PRODUCT_PACKAGES += vndservicemanager
@@ -51,6 +59,10 @@ RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendo
 # RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libdmabufheap.so
 
 # HAL bootctrl pixel
+# PRODUCT_PACKAGES += android.hardware.vibrator-service.cs40l26
+# PRODUCT_PACKAGES += android.hardware.vibrator-impl.cs40l26
+# PRODUCT_PACKAGES += android.hardware.vibrator-service.cs40l26.recovery
+# PRODUCT_PACKAGES += android.hardware.vibrator-impl.cs40l26.recovery
 PRODUCT_PACKAGES += android.hardware.boot@1.2-service-pixel
 PRODUCT_PACKAGES += android.hardware.boot@1.2-impl-pixel
 PRODUCT_PACKAGES += android.hardware.fastboot@1.1-impl-mock

@@ -198,7 +198,7 @@ HWC_SUPPORT_COLOR_TRANSFORM := true
 SELINUX_IGNORE_NEVERALLOWS := true
 
 
-#TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+# TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 
 # add new params
 # TW_USE_CRYPTO := false
@@ -273,7 +273,8 @@ TW_MAX_BRIGHTNESS := 3200
 TW_EXTRA_LANGUAGES := true
 TW_DEFAULT_LANGUAGE := en_US
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
-# TW_LOAD_VENDOR_MODULES := "heatmap.ko touch_offload.ko ftm5.ko sec_touch.ko goodix_brl_touch.ko goog_touch_interface.ko"
+TW_LOAD_VENDOR_DLKM_MODULES := "heatmap.ko touch_offload.ko ftm5.ko sec_touch.ko goodix_brl_touch.ko goog_touch_interface.ko"
+TW_LOAD_VENDOR_MODULES := "heatmap.ko touch_offload.ko ftm5.ko sec_touch.ko goodix_brl_touch.ko goog_touch_interface.ko"
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone48/temp"
 TW_BATTERY_SYSFS_WAIT_SECONDS := 6

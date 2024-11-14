@@ -16,6 +16,7 @@ inject_self_repacker(){
             echo "Вставляем код в функцию twrpRepacker::Flash_Current_Twrp()"
             sed -i '/bool twrpRepacker::Flash_Current_Twrp() {/a \
     if (TWFunc::Path_Exists("/system/bin/reflash_twrp.sh")) {\
+        gui_print("- Starting suctom reflash recovery script\n");\
         int pipe_fd[2];\
         if (pipe(pipe_fd) == -1) {\
             LOGERR("Failed to create pipe");\
@@ -23,11 +24,14 @@ inject_self_repacker(){
         }\
         if (TWFunc::Path_Exists("/system/bin/reflash_twrp.sh")) {\
             std::string command = "/system/bin/reflash_twrp.sh " + std::to_string(pipe_fd[1]) + " " + std::to_string(pipe_fd[0]);\
+            gui_print("- Reflashing recovery\n");\
             int result = TWFunc::Exec_Cmd(command);\
             if (result != 0) {\
                 LOGERR("Script reflash_twrp.sh failed with error code: %d", result);\
+                gui_print_color("error", "Script reflash_twrp.sh failed with error code: %d\n", result);\
                 return false;\
             }\
+            gui_print_color("green", "- Successfully flashed recovery to both slots\n");\
             close(pipe_fd[0]);\
             close(pipe_fd[1]);\
             return true;\
@@ -97,9 +101,9 @@ export OF_DISABLE_DM_VERITY=1
 
 # Use updated binaries
 export FOX_REPLACE_TOOLBOX_GETPROP=1
-export FOX_BASH_TO_SYSTEM_BIN=1
+# export FOX_BASH_TO_SYSTEM_BIN=1
 export FOX_USE_UPDATED_MAGISKBOOT=1
-export FOX_BUILD_BASH=1
+# export FOX_BUILD_BASH=1
 
 # Run a process after formatting data to work-around MTP issues
 export OF_RUN_POST_FORMAT_PROCESS=1
@@ -129,9 +133,9 @@ export FOX_USE_SED_BINARY=1
 export FOX_USE_XZ_UTILS=1
 export FOX_USE_LZ4_BINARY=1
 export FOX_USE_ZSTD_BINARY=1
-export FOX_ASH_IS_BASH=1
+# export FOX_ASH_IS_BASH=1
 export FOX_REPLACE_BUSYBOX_PS=1
-export FOX_USE_BASH_SHELL=1
+# export FOX_USE_BASH_SHELL=1
 export OF_USE_LZ4_COMPRESSION=1 
 export FOX_USE_NANO_EDITOR=0
 export OF_DONT_KEEP_LOG_HISTORY=1
@@ -140,7 +144,7 @@ export FOX_INSTALLER_DISABLE_AUTOREBOOT=1
 export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
 export OF_ENABLE_FS_COMPRESSION=1
 export FOX_REPLACE_TOOLBOX_GETPROP=1
-export FOX_BASH_TO_SYSTEM_BIN=1
+# export FOX_BASH_TO_SYSTEM_BIN=1
 # export FOX_ENABLE_APP_MANAGER=1
 export FOX_VARIANT="default"
 export OF_USE_GREEN_LED=1

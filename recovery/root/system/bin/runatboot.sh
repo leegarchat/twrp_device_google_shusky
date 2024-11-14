@@ -155,12 +155,14 @@ slot=`getprop ro.boot.slot_suffix`;
 device_code=`getprop ro.hardware`;
 
 for module in goodixfp heatmap goog_touch_interface sec_touch ftm5 goodix_brl_touch ; do
-	insmod /vendor/lib/modules/${module}.ko;
-	if [ $? -eq 0 ]; then
-		echo "I:modules_fix: $module unloaded successfully!" >> $LOGF;
-	else
-		echo "E:modules_fix: Cannot unload $module!" >> $LOGF;
-	fi
+    for f in vendor_dlkm/lib/modules /vendor/lib/modules ; do
+        insmod $f/${module}.ko;
+        if [ $? -eq 0 ]; then
+            echo "I:modules_fix: $module unloaded successfully!" >> $LOGF;
+        else
+            echo "E:modules_fix: Cannot unload $module!" >> $LOGF;
+        fi
+    done
 done
 
 
