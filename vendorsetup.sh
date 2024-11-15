@@ -16,7 +16,7 @@ inject_self_repacker(){
             echo "Вставляем код в функцию twrpRepacker::Flash_Current_Twrp()"
             sed -i '/bool twrpRepacker::Flash_Current_Twrp() {/a \
     if (TWFunc::Path_Exists("/system/bin/reflash_twrp.sh")) {\
-        gui_print("- Starting suctom reflash recovery script\n");\
+        gui_print("- Starting suctom reflash recovery script\\n");\
         int pipe_fd[2];\
         if (pipe(pipe_fd) == -1) {\
             LOGERR("Failed to create pipe");\
@@ -24,14 +24,14 @@ inject_self_repacker(){
         }\
         if (TWFunc::Path_Exists("/system/bin/reflash_twrp.sh")) {\
             std::string command = "/system/bin/reflash_twrp.sh " + std::to_string(pipe_fd[1]) + " " + std::to_string(pipe_fd[0]);\
-            gui_print("- Reflashing recovery\n");\
+            gui_print("- Reflashing recovery\\n");\
             int result = TWFunc::Exec_Cmd(command);\
             if (result != 0) {\
                 LOGERR("Script reflash_twrp.sh failed with error code: %d", result);\
-                gui_print_color("error", "Script reflash_twrp.sh failed with error code: %d\n", result);\
+                gui_print_color("error", "Script reflash_twrp.sh failed with error code: %d\\n", result);\
                 return false;\
             }\
-            gui_print_color("green", "- Successfully flashed recovery to both slots\n");\
+            gui_print_color("green", "- Successfully flashed recovery to both slots\\n");\
             close(pipe_fd[0]);\
             close(pipe_fd[1]);\
             return true;\

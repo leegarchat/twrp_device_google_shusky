@@ -16,10 +16,10 @@ if [ -f "/dev/current_vendor_boot_backup/current_vendor_boot.img" ] ; then
     mkdir -pv /dev/repack_vboot/fox
     cd /dev/repack_vboot/fox
     $MG unpack /dev/current_vendor_boot_backup/current_vendor_boot.img
-    [ -f /dev/repack_vboot/fox/vendor_ramdisk/recovery.cpio ] || {
-        ui_print "- Backup of ofox is missing recovery.cpio"
-        exit 22
-    }
+    # [ -f /dev/repack_vboot/fox/vendor_ramdisk/recovery.cpio ] || {
+    #     ui_print "- Backup of ofox is missing recovery.cpio"
+    #     exit 22
+    # }
     [ -f /dev/repack_vboot/fox/vendor_ramdisk/ramdisk.cpio ] || {
         ui_print "- Backup of ofox is missing ramdisk.cpio"
         exit 22
