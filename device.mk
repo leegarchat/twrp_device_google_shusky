@@ -11,8 +11,9 @@ TARGET_BOARD_KERNEL_HEADERS := device/google/shusky-kernel/kernel-headers
 
 $(call soong_config_set,google_displaycolor,displaycolor_platform,zuma)
 
-PRODUCT_SHIPPING_API_LEVEL := 32
+PRODUCT_SHIPPING_API_LEVEL := 34
 PRODUCT_TARGET_VNDK_VERSION := 34
+TARGET_VNDK_VERSION := 34
 PRODUCT_PLATFORM := zuma
 AB_OTA_UPDATER := true
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/included-stuff/manifest.xml
@@ -32,7 +33,9 @@ PRODUCT_PACKAGES += fsck.vendor_ramdisk
 PRODUCT_PACKAGES += tune2fs.vendor_ramdisk
 PRODUCT_PACKAGES += fstab.zuma.vendor_ramdisk
 PRODUCT_PACKAGES += fstab.zuma-fips.vendor_ramdisk
-
+# PRODUCT_PACKAGES += auditctl
+# PRODUCT_PACKAGES += logd
+# PRODUCT_PACKAGES += logcat
 # PRODUCT_PACKAGES += resize2fs.vendor_ramdisk
 PRODUCT_PACKAGES += resize.f2fs.vendor_ramdisk
 PRODUCT_PACKAGES += linker_hwasan64.vendor_ramdisk
@@ -42,13 +45,17 @@ PRODUCT_PACKAGES += defrag.f2fs.vendor_ramdisk
 
 PRODUCT_PACKAGES += libtrusty
 PRODUCT_PACKAGES += update_engine_sideload
+# PRODUCT_PACKAGES += servicemanager
+# PRODUCT_PACKAGES += servicemanager.rc
+# PRODUCT_PACKAGES += hwservicemanager.rc
 PRODUCT_PACKAGES += vndservicemanager
 PRODUCT_PACKAGES += vndservice
+# PRODUCT_PACKAGES += vndservicemanager.rc
 PRODUCT_PACKAGES += libhidltransport.vendor
 PRODUCT_PACKAGES += libdisplaycolor
 PRODUCT_PACKAGES += audioroute 
 PRODUCT_PACKAGES += libaudioroutelite
-PRODUCT_PACKAGES += mm_logd
+# PRODUCT_PACKAGES += mm_logd
 # PRODUCT_PACKAGES += libion
 PRODUCT_PACKAGES += PixelLogger
 PRODUCT_PACKAGES_DEBUG += PixelLogger
@@ -65,7 +72,11 @@ RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendo
 # PRODUCT_PACKAGES += android.hardware.vibrator-impl.cs40l26.recovery
 PRODUCT_PACKAGES += android.hardware.boot@1.2-service-pixel
 PRODUCT_PACKAGES += android.hardware.boot@1.2-impl-pixel
-PRODUCT_PACKAGES += android.hardware.fastboot@1.1-impl-mock
+PRODUCT_PACKAGES += bootctl
+# PRODUCT_PACKAGES += android.hardware.boot-service.default_recovery-pixel
+# PRODUCT_PACKAGES += android.hardware.boot-service.default-pixel
+PRODUCT_PACKAGES += android.hardware.fastboot@1.1-impl-pixel \
+	fastbootd
 
 AB_OTA_POSTINSTALL_CONFIG += RUN_POSTINSTALL_system=true
 AB_OTA_POSTINSTALL_CONFIG += POSTINSTALL_PATH_system=system/bin/otapreopt_script

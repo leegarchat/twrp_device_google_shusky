@@ -70,6 +70,15 @@
         <fqname>@1.0::IGatekeeper/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.health</name>
+        <transport>hwbinder</transport>
+        <version>2.1</version>
+        <interface>
+            <name>IHealth</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.keymaster</name>
         <transport>hwbinder</transport>
         <fqname>@4.1::IKeymasterDevice/default</fqname>
@@ -172,7 +181,7 @@
    <hal format="hidl">
         <name>android.hardware.boot</name>
         <transport>hwbinder</transport>
-        <fqname>@1.0::IBootControl/default</fqname>
+        <fqname>@1.2::IBootControl/default</fqname>
     </hal> 
         <hal format="hidl">
         <name>android.hardware.usb</name>

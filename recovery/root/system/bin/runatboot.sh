@@ -148,25 +148,53 @@ update_keys_in_file() {
 		resetprop "$key" "${key_value_pairs[$key]}"
     done
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+if ! [ -L /etc/ ] ; then
+    restorecon -v /system/bin/logd
+    restorecon -v /system/bin/logcat
+    chmod -R 777 /system/bin        
+    if ! [ -d /dev/cgroup_info/ ] ; then
+        mkdir -pv /dev/cgroup_info/
+    fi
+    echo "cgroup_config_version=1" > /dev/cgroup_info/cgroup.rc
+    cp -a /etc/* /system/etc/
+    rm -rf /etc/
+    ln -s /system/etc/ /etc
+    
+    stop logd
+    start logd
+fi
 
 LOGF=/tmp/recovery.log;
 slot=`getprop ro.boot.slot_suffix`;
 [[ -z $slot ]] && slot=`bootctl get-current-slot | xargs bootctl get-suffix`;
 device_code=`getprop ro.hardware`;
 
+case $slot in
+    _a) unslot=_b 
+        ;;
+    _b) unslot=_a 
+        ;;
+esac
+
+mkdir -vp /dev/modules_inject/vendor_dlkm_a
+mkdir -vp /dev/modules_inject/vendor_dlkm_b
+mount -r /dev/block/mapper/vendor_dlkm_b /dev/modules_inject/vendor_dlkm_b
+mount -r /dev/block/mapper/vendor_dlkm_a /dev/modules_inject/vendor_dlkm_a
+
 for module in goodixfp heatmap goog_touch_interface sec_touch ftm5 goodix_brl_touch ; do
-    for f in vendor_dlkm/lib/modules vendor_dlkm/lib/modules/1.1 vendor_dlkm/lib/modules/1.2 /vendor/lib/modules /system/modules_touch; do
-        if [ -f $f/${module}.ko ] ; then
-            insmod $f/${module}.ko;
-            if [ $? -eq 0 ]; then
-                echo "I:modules_fix: $module unloaded successfully!" >> $LOGF;
-            else
-                echo "E:modules_fix: Cannot unload $module!" >> $LOGF;
-            fi
+    files_finded=$(find /dev/modules_inject/vendor_dlkm$slot /dev/modules_inject/vendor_dlkm$unslot /tmp/vendor /tmp/vendor_dlkm /system/modules_touch | grep "${module}.ko" )
+    for f in $files_finded; do
+        insmod $f;
+        if [ $? -eq 0 ]; then
+            echo "I:modules_fix: $module unloaded successfully!" >> $LOGF;
+        else
+            echo "E:modules_fix: Cannot unload $module!" >> $LOGF;
         fi
     done
 done
-
+umount /dev/modules_inject/vendor_dlkm_b
+umount /dev/modules_inject/vendor_dlkm_a
 
 update_keys_in_file general_value_props;
 update_keys_in_file ${device_code}_value_prop;
