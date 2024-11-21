@@ -95,6 +95,7 @@ declare -A shiba_value_prop=(
         ["ro.product.odm.device"]="shiba"
         ["ro.product.odm.model"]="Pixel 8"
         ["ro.product.odm.name"]="shiba"
+        ["ro.product.model"]="Pixel 8"
         ["ro.odm.build.fingerprint"]="google/shiba/shiba:15/AP3A.241005.015/12366759:user/release-keys"
         ["ro.product.product.device"]="shiba"
         ["ro.product.product.model"]="Pixel 8"
@@ -124,6 +125,7 @@ declare -A husky_value_prop=(
         ["ro.product.vendor.device"]="husky"
         ["ro.product.vendor.model"]="Pixel 8 Pro"
         ["ro.product.vendor.name"]="husky"
+        ["ro.product.model"]="Pixel 8 Pro"
         ["ro.vendor.build.fingerprint"]="google/husky/husky:15/AP3A.241005.015/12366759:user/release-keys"
         ["ro.product.board"]="husky"
         ["ro.product.odm.device"]="husky"
@@ -179,6 +181,9 @@ case $slot in
     _b) unslot=_a 
         ;;
 esac
+
+ln -s /system/bin/magisk28.zip /system/bin/uninstall_magisk.zip
+resetprop servicemanager.ready true
 
 mkdir -vp /dev/modules_inject/vendor_dlkm_a
 mkdir -vp /dev/modules_inject/vendor_dlkm_b

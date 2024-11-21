@@ -63,6 +63,7 @@ PRODUCT_PACKAGES += libhidltransport.vendor
 PRODUCT_PACKAGES += audioroute
 
 PRODUCT_PACKAGES += libaudioroutelite
+
 ifeq ($(BUILD_VATIANT_SELF),PB)
 
     PRODUCT_SHIPPING_API_LEVEL := 34
