@@ -15,73 +15,55 @@
 //
 
 
-cc_binary {
-    name: "android.hardware.boot-service.default-pixel",
-    init_rc: ["android.hardware.boot-service.default-pixel.rc"],
-    recovery: true,
-    relative_install_path: "hw",
-    // defaults: ["libboot_control_defaults"],
-    cflags: [
-        "-D_FILE_OFFSET_BITS=64",
-        "-Werror",
-        "-Wall",
-        "-Wextra",
-    ],
-    shared_libs: [
-        "libbase",
-        "libbinder_ndk",
-        "libcutils",
-        "libz",
-        "libtrusty",
-        "liblog",
-        "android.hardware.boot@1.1",
-        "android.hardware.boot-V1-ndk",
-    ],
-    static_libs: [
-        "libboot_control",
-        "libbootloader_message",
-        "libbootloader_message_vendor",
-        "libfstab",
-    ],
-    srcs: [
-        "BootControl.cpp",
-        "GptUtils.cpp",
-        "service.cpp"
-    ],
-}
+// cc_binary {
+//     name: "android.hardware.boot-service.default-pixel",
+//     init_rc: ["android.hardware.boot-service.default-pixel.rc"],
+//     recovery_available: true,
+//     relative_install_path: "hw",
+//     defaults: ["libboot_control_defaults"],
+//     shared_libs: [
+//         "libbase",
+//         "libbinder_ndk",
+//         "libcutils",
+//         "libz",
+//         "libtrusty",
+//         "android.hardware.boot@1.1",
+//         "android.hardware.boot-V1-ndk",
+//     ],
+//     static_libs: [
+//         "libboot_control",
+//         "libbootloader_message_vendor",
+//     ],
+//     srcs: [
+//         "BootControl.cpp",
+//         "GptUtils.cpp",
+//         "service.cpp"
+//     ],
+// }
 
-cc_binary {
-    name: "android.hardware.boot-service.default_recovery-pixel",
-    vintf_fragments: ["android.hardware.boot-service.default_recovery-pixel.xml"],
-    init_rc: ["android.hardware.boot-service.default_recovery-pixel.rc"],
-    recovery: true,
-    relative_install_path: "hw",
-    // defaults: ["libboot_control_defaults"],
-    cflags: [
-        "-D_FILE_OFFSET_BITS=64",
-        "-Werror",
-        "-Wall",
-        "-Wextra",
-    ],
-    shared_libs: [
-        "libbase",
-        "libbinder_ndk",
-        "libcutils",
-        "libz",
-        "libtrusty",
-        "liblog",
-        "android.hardware.boot@1.1",
-        "android.hardware.boot-V1-ndk",
-    ],
-    static_libs: [
-        "libboot_control",
-        "libbootloader_message",
-        "libbootloader_message_vendor",
-        "libfstab",
-    ],
-    srcs: [
-        "BootControl.cpp",
-        "GptUtils.cpp",
-        "service.cpp"
-    ],
-}
+// cc_binary {
+//     name: "android.hardware.boot-service.default_recovery-pixel",
+//     vintf_fragments: ["android.hardware.boot-service.default_recovery-pixel.xml"],
+//     init_rc: ["android.hardware.boot-service.default_recovery-pixel.rc"],
+//     recovery_available: true,
+//     relative_install_path: "hw",
+//     defaults: ["libboot_control_defaults"],
+//     shared_libs: [
+//         "libbase",
+//         "libbinder_ndk",
+//         "libcutils",
+//         "libz",
+//         "libtrusty",
+//         "android.hardware.boot@1.1",
+//         "android.hardware.boot-V1-ndk",
+//     ],
+//     static_libs: [
+//         "libboot_control",
+//         "libbootloader_message_vendor",
+//     ],
+//     srcs: [
+//         "BootControl.cpp",
+//         "GptUtils.cpp",
+//         "service.cpp"
+//     ],
+// }

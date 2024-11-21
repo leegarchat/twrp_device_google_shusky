@@ -7,41 +7,37 @@
 
 # Inherit device configuration
 
-DEVICE_PATH := device/google/shusky
+
+
+
+PRODUCT_RELEASE_NAME := shusky
+
+DEVICE_PATH := device/google/$(PRODUCT_RELEASE_NAME)
+
 
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-$(call inherit-product-if-exists, $(DEVICE_PATH)/fox_$(PRODUCT_RELEASE_NAME).mk)
 
-PRODUCT_DEVICE := shusky
-PRODUCT_NAME := twrp_shusky
-PRODUCT_BRAND := google
-PRODUCT_MODEL := Pixel 8
-PRODUCT_MANUFACTURER := google
+
+ifeq ($(BUILD_VATIANT_SELF),FOX)
+    $(call inherit-product, $(DEVICE_PATH)/fox_shusky.mk)
+    $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+    $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+    $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
+    $(call inherit-product, vendor/twrp/config/common.mk)
+else
+    $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
+endif
+
+
+PRODUCT_NAME := twrp_$(PRODUCT_RELEASE_NAME)
+PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
+PRODUCT_BRAND := GOOGLE
+PRODUCT_MANUFACTURER := Google
+PRODUCT_MODEL := GOOGLE 8/8 PRO
 
 PRODUCT_GMS_CLIENTID_BASE := android-google
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="shusky-user 15 AP3A.241005.015 12366759 release-keys" \
-    BuildFingerprint=google/shusky/shusky:15/AP3A.241005.015/12366759:user/release-keys \
-    DeviceProduct=shusky
-
-PRODUCT_SOONG_NAMESPACES += \
-    $(DEVICE_PATH)
-
-PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
-
-
-
-
-
-# DEVICE_PACKAGE_OVERLAYS += device/google/zuma/overlay-factory
-
-
-

@@ -9,4 +9,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_shusky.mk
 
 COMMON_LUNCH_CHOICES := \
+    twrp_shusky-user \
+    twrp_shusky-userdebug \
     twrp_shusky-eng

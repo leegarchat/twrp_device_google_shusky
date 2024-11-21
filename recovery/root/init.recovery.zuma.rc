@@ -12,8 +12,6 @@ on init
     start identity-citadeld
     start weaver-citadeld
     start boot-hal-1-2
-    start vibratorfeature-hal-service
-    # start vendor.boot-default
 
 on init && property:ro.boot.mode=recovery
     start recovery-console

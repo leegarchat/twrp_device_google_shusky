@@ -80,32 +80,32 @@ declare -A shiba_value_prop=(
         ["ro.crdroid.device"]="shiba"
         ["ro.product.system.device"]="shiba"
         ["ro.product.system.model"]="Pixel 8"
-        ["ro.product.system.name"]="fox_shiba"
+        ["ro.product.system.name"]="shiba"
         ["ro.system.build.fingerprint"]="google/shiba/shiba:15/AP3A.241005.015/12366759:user/release-keys"
-        ["ro.build.display.id"]="fox_shiba-userdebug 99.87.36 AP3A.241005.015 eng.trijal.20240907.130349 test-keys"
-        ["ro.build.flavor"]="fox_shiba-userdebug"
+        ["ro.build.display.id"]="shiba-userdebug 99.87.36 AP3A.241005.015 eng.trijal.20240907.130349 test-keys"
+        ["ro.build.flavor"]="shiba-userdebug"
         ["ro.build.product"]="shiba"
         ["ro.build.description"]="shiba-user 14 AP2A.240805.005 12025142 release-keys"
         ["ro.display.series"]="Pixel 8"
         ["ro.product.vendor.device"]="shiba"
         ["ro.product.vendor.model"]="Pixel 8"
-        ["ro.product.vendor.name"]="fox_shiba"
+        ["ro.product.vendor.name"]="shiba"
         ["ro.vendor.build.fingerprint"]="google/shiba/shiba:15/AP3A.241005.015/12366759:user/release-keys"
         ["ro.product.board"]="shiba"
         ["ro.product.odm.device"]="shiba"
         ["ro.product.odm.model"]="Pixel 8"
-        ["ro.product.odm.name"]="fox_shiba"
+        ["ro.product.odm.name"]="shiba"
         ["ro.odm.build.fingerprint"]="google/shiba/shiba:15/AP3A.241005.015/12366759:user/release-keys"
         ["ro.product.product.device"]="shiba"
         ["ro.product.product.model"]="Pixel 8"
-        ["ro.product.product.name"]="fox_shiba"
+        ["ro.product.product.name"]="shiba"
         ["ro.product.build.fingerprint"]="google/shiba/shiba:15/AP3A.241005.015/12366759:user/release-keys"
         ["ro.product.system_ext.device"]="shiba"
         ["ro.product.system_ext.model"]="Pixel 8"
-        ["ro.product.system_ext.name"]="fox_shiba"
+        ["ro.product.system_ext.name"]="shiba"
         ["ro.system_ext.build.fingerprint"]="google/shiba/shiba:15/AP3A.241005.015/12366759:user/release-keys"
 		["ro.product.device"]="shiba"
-		["ro.product.name"]="fox_shiba"
+		["ro.product.name"]="shiba"
 )
 
 declare -A husky_value_prop=(
@@ -114,32 +114,32 @@ declare -A husky_value_prop=(
         ["ro.crdroid.device"]="husky"
         ["ro.product.system.device"]="husky"
         ["ro.product.system.model"]="Pixel 8 Pro"
-        ["ro.product.system.name"]="fox_husky"
+        ["ro.product.system.name"]="husky"
         ["ro.system.build.fingerprint"]="google/husky/husky:15/AP3A.241005.015/12366759:user/release-keys"
-        ["ro.build.display.id"]="fox_husky-eng 99.87.36 AP3A.241005.015 eng.trijal.20240907.130349 test-keys"
-        ["ro.build.flavor"]="fox_husky-eng"
+        ["ro.build.display.id"]="husky-eng 99.87.36 AP3A.241005.015 eng.trijal.20240907.130349 test-keys"
+        ["ro.build.flavor"]="husky-eng"
         ["ro.build.product"]="husky"
         ["ro.build.description"]="husky-user 14 AP2A.240805.005 12025142 release-keys"
         ["ro.display.series"]="Pixel 8 Pro"
         ["ro.product.vendor.device"]="husky"
         ["ro.product.vendor.model"]="Pixel 8 Pro"
-        ["ro.product.vendor.name"]="fox_husky"
+        ["ro.product.vendor.name"]="husky"
         ["ro.vendor.build.fingerprint"]="google/husky/husky:15/AP3A.241005.015/12366759:user/release-keys"
         ["ro.product.board"]="husky"
         ["ro.product.odm.device"]="husky"
         ["ro.product.odm.model"]="Pixel 8 Pro"
-        ["ro.product.odm.name"]="fox_husky"
+        ["ro.product.odm.name"]="husky"
         ["ro.odm.build.fingerprint"]="google/husky/husky:15/AP3A.241005.015/12366759:user/release-keys"
         ["ro.product.product.device"]="husky"
         ["ro.product.product.model"]="Pixel 8 Pro"
-        ["ro.product.product.name"]="fox_husky"
+        ["ro.product.product.name"]="husky"
         ["ro.product.build.fingerprint"]="google/husky/husky:15/AP3A.241005.015/12366759:user/release-keys"
         ["ro.product.system_ext.device"]="husky"
         ["ro.product.system_ext.model"]="Pixel 8 Pro"
-        ["ro.product.system_ext.name"]="fox_husky"
+        ["ro.product.system_ext.name"]="husky"
         ["ro.system_ext.build.fingerprint"]="google/husky/husky:15/AP3A.241005.015/12366759:user/release-keys"
 		["ro.product.device"]="husky"
-		["ro.product.name"]="fox_husky"
+		["ro.product.name"]="husky"
 )
 
 update_keys_in_file() {
@@ -148,8 +148,8 @@ update_keys_in_file() {
 		resetprop "$key" "${key_value_pairs[$key]}"
     done
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-if ! [ -L /etc/ ] ; then
+build_variant=$(getprop build.variant.self)
+if [ $build_variant == "PB" ] ; then
     restorecon -v /system/bin/logd
     restorecon -v /system/bin/logcat
     chmod -R 777 /system/bin        
@@ -164,6 +164,9 @@ if ! [ -L /etc/ ] ; then
     stop logd
     start logd
 fi
+
+
+
 
 LOGF=/tmp/recovery.log;
 slot=`getprop ro.boot.slot_suffix`;
@@ -195,6 +198,7 @@ for module in goodixfp heatmap goog_touch_interface sec_touch ftm5 goodix_brl_to
 done
 umount /dev/modules_inject/vendor_dlkm_b
 umount /dev/modules_inject/vendor_dlkm_a
+
 
 update_keys_in_file general_value_props;
 update_keys_in_file ${device_code}_value_prop;
