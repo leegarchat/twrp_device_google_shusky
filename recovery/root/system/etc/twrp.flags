@@ -3,20 +3,20 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 # mount point  fstype device                             device2              	flags
-/system                erofs   /dev/block/mapper/system                                           flags=display="System";logical;slotselect
-/system                ext4    /dev/block/mapper/system                                           flags=display="System";logical;slotselect
-/system_ext            erofs   /dev/block/mapper/system_ext                                       flags=display="System Ext";logical;slotselect
-/system_ext            ext4    /dev/block/mapper/system_ext                                       flags=display="System Ext";logical;slotselect
-/product               erofs   /dev/block/mapper/product                                          flags=display="Product";logical;slotselect
-/product               ext4    /dev/block/mapper/product                                          flags=display="Product";logical;slotselect
-/vendor                erofs   /dev/block/mapper/vendor                                           flags=display="Vendor";logical;slotselect
-/vendor                ext4    /dev/block/mapper/vendor                                           flags=display="Vendor";logical;slotselect
-/vendor_dlkm           erofs   /dev/block/mapper/vendor_dlkm                                      flags=display="Vendor DLKM";logical;slotselect
-/vendor_dlkm           ext4    /dev/block/mapper/vendor_dlkm                                      flags=display="Vendor DLKM";logical;slotselect
-/system_dlkm                erofs   /dev/block/mapper/system_dlkm                                           flags=display="system_dlkm";logical;slotselect
-/system_dlkm                ext4    /dev/block/mapper/system_dlkm                                           flags=display="system_dlkm";logical;slotselect
-/metadata              	ext4    /dev/block/platform/13200000.ufs/by-name/metadata                             flags=display="Metadata";backup=1;wrappedkey
-/metadata              	f2fs    /dev/block/platform/13200000.ufs/by-name/metadata                             flags=display="Metadata";backup=1;wrappedkey
+# /system                erofs   /dev/block/mapper/system                                           flags=display="System";logical;backup=1;slotselect
+/system                ext4    /dev/block/mapper/system                                           flags=display="System";logical;backup=1;slotselect
+# /system_ext            erofs   /dev/block/mapper/system_ext                                       flags=display="System Ext";logical;backup=1;slotselect
+/system_ext            ext4    /dev/block/mapper/system_ext                                       flags=display="System Ext";logical;backup=1;slotselect
+# /product               erofs   /dev/block/mapper/product                                          flags=display="Product";logical;backup=1;slotselect
+/product               ext4    /dev/block/mapper/product                                          flags=display="Product";logical;backup=1;slotselect
+# /vendor                erofs   /dev/block/mapper/vendor                                           flags=display="Vendor";logical;backup=1;slotselect
+/vendor                ext4    /dev/block/mapper/vendor                                           flags=display="Vendor";logical;backup=1;slotselect
+# /vendor_dlkm           erofs   /dev/block/mapper/vendor_dlkm                                      flags=display="Vendor DLKM";logical;backup=1;slotselect
+/vendor_dlkm           ext4    /dev/block/mapper/vendor_dlkm                                      flags=display="Vendor DLKM";logical;backup=1;slotselect
+# /system_dlkm                erofs   /dev/block/mapper/system_dlkm                                           flags=display="system_dlkm";logical;backup=1;slotselect
+/system_dlkm                ext4    /dev/block/mapper/system_dlkm                                           flags=display="system_dlkm";logical;backup=1;slotselect
+# /metadata              	ext4    /dev/block/platform/13200000.ufs/by-name/metadata                             flags=display="Metadata";backup=1;wrappedkey
+/metadata              	f2fs    /dev/block/platform/13200000.ufs/by-name/metadata                             flags=display="Metadata";backup=1;wipeingui;wrappedkey
 /storage       	       	ext4    /data/media/0                  		     		 	   flags=backup=1;display="Internal Storage";usermrf;fsflags="bind";removable
 
 
@@ -36,7 +36,7 @@
 /persist		        ext4		/dev/block/platform/13200000.ufs/by-name/persist              flags=slotselect;display="Persist";backup=1;flashimg=1
 /misc                           emmc            /dev/block/platform/13200000.ufs/by-name/misc 
 
-/data                           f2fs            /dev/block/platform/13200000.ufs/by-name/userdata             flags=fileencryption=:aes-256-hctr2:inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption
+# /data                           f2fs            /dev/block/platform/13200000.ufs/by-name/userdata             flags=
 
 # Firmware 
 /modem				emmc		/dev/block/platform/13200000.ufs/by-name/modem	              flags=slotselect;backup=1;display="modem (fw)";flashimg=1
