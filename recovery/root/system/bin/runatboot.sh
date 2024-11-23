@@ -20,7 +20,7 @@
 #
 
 
-
+setenforce 0
 
 
 declare -A general_value_props=(

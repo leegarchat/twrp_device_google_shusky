@@ -1,0 +1,60 @@
+
+// cc_defaults {
+//     name: "android.hardware.health-service.zuma-defaults",
+//     defaults: [
+//         "libhealth_aidl_impl_user",
+//         "libhealth_aidl_charger_defaults",
+//     ],
+//     relative_install_path: "hw",
+//     vintf_fragments: ["android.hardware.health-service.zuma.xml"],
+//     srcs: [
+//         "Health.cpp",
+//     ],
+
+//     cflags: [
+//         "-Wall",
+//         "-Werror",
+//     ],
+
+//     static_libs: [
+//         "libhealth_aidl_impl",
+//     ],
+// }
+
+// cc_binary {
+//     name: "android.hardware.health-service.zuma",
+//     defaults: ["android.hardware.health-service.zuma-defaults"],
+//     proprietary: true,
+//     init_rc: ["android.hardware.health-service.zuma.rc"],
+//     overrides: ["charger"],
+//     shared_libs: [
+//         "libpixelhealth",
+//     ],
+// }
+
+cc_binary {
+    name: "android.hardware.health-service.zuma_recovery",
+    // defaults: ["android.hardware.health-service.zuma-defaults"],
+    init_rc: ["android.hardware.health-service.zuma_recovery.rc"],
+    defaults: [
+        "libhealth_aidl_impl_user",
+        "libhealth_aidl_charger_defaults",
+    ],
+    relative_install_path: "hw",
+    vintf_fragments: ["android.hardware.health-service.zuma.xml"],
+    srcs: [
+        "Health.cpp",
+    ],
+
+    // cflags: [
+    //     "-Wall",
+    //     "-Werror",
+    // ],
+
+    static_libs: [
+        "libhealth_aidl_impl",
+    ],
+    recovery: true,
+    
+    // overrides: ["charger.recovery"],
+}

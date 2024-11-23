@@ -12,6 +12,9 @@ on init
     start identity-citadeld
     start weaver-citadeld
     start boot-hal-1-2
+    # start vendor.boot-default
+    start vendor.health-zuma
+
 
 on init && property:ro.boot.mode=recovery
     start recovery-console

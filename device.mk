@@ -34,6 +34,8 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 PRODUCT_PACKAGES += android.hardware.boot@1.2-service-pixel
 PRODUCT_PACKAGES += android.hardware.boot@1.2-impl-pixel
 PRODUCT_PACKAGES += fastbootd
+# PRODUCT_PACKAGES += android.hardware.boot-service.default_recovery-pixel
+PRODUCT_PACKAGES += android.hardware.health-service.zuma_recovery
 AB_OTA_POSTINSTALL_CONFIG += RUN_POSTINSTALL_system=true
 AB_OTA_POSTINSTALL_CONFIG += POSTINSTALL_PATH_system=system/bin/otapreopt_script
 AB_OTA_POSTINSTALL_CONFIG += POSTINSTALL_OPTIONAL_system=true
