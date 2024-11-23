@@ -39,7 +39,7 @@ AB_OTA_POSTINSTALL_CONFIG += POSTINSTALL_PATH_system=system/bin/otapreopt_script
 AB_OTA_POSTINSTALL_CONFIG += POSTINSTALL_OPTIONAL_system=true
 AB_OTA_POSTINSTALL_CONFIG += FILESYSTEM_TYPE_system=ext4
 
-PRODUCT_PACKAGES += otapreopt_script
+# PRODUCT_PACKAGES += otapreopt_script
 PRODUCT_PACKAGES += checkpoint_gc
 PRODUCT_PACKAGES += cppreopts.sh
 PRODUCT_PACKAGES += update_engine
